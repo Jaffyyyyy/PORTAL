@@ -1,66 +1,472 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MSAAP Portal</title>
-  <!-- Points into the css folder -->
-  <link rel="stylesheet" href="css/style.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAM-ON ES Performance Analytics Dashboard</title>
+
+<style>
+:root{
+--navy:#0f2f63;
+--blue:#1d4f91;
+--light:#f5f7fb;
+--card:#ffffff;
+--success:#16a34a;
+--danger:#dc2626;
+--warning:#d97706;
+--shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Segoe UI,Arial,sans-serif;
+background:#eef2f7;
+color:#1f2937;
+}
+
+.header{
+background:linear-gradient(135deg,var(--navy),var(--blue));
+color:#fff;
+padding:20px;
+}
+
+.header h1{
+font-size:28px;
+margin-bottom:6px;
+}
+
+.header p{
+opacity:.9;
+}
+
+.container{
+padding:20px;
+max-width:1500px;
+margin:auto;
+}
+
+.tabs{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:15px;
+}
+
+.tab{
+padding:10px 18px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:#e5e7eb;
+font-weight:600;
+}
+
+.tab.active{
+background:var(--navy);
+color:#fff;
+}
+
+.controls{
+display:flex;
+gap:10px;
+margin-bottom:15px;
+flex-wrap:wrap;
+}
+
+.controls button{
+padding:10px 14px;
+border:none;
+border-radius:8px;
+cursor:pointer;
+background:var(--blue);
+color:#fff;
+}
+
+.kpis{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:15px;
+margin-bottom:20px;
+}
+
+.card{
+background:var(--card);
+padding:18px;
+border-radius:12px;
+box-shadow:var(--shadow);
+}
+
+.card h4{
+font-size:13px;
+color:#6b7280;
+margin-bottom:10px;
+}
+
+.card .value{
+font-size:30px;
+font-weight:700;
+color:var(--navy);
+}
+
+.section{
+background:#fff;
+padding:18px;
+border-radius:12px;
+margin-bottom:20px;
+box-shadow:var(--shadow);
+}
+
+.section h2{
+margin-bottom:15px;
+color:var(--navy);
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th{
+background:var(--navy);
+color:#fff;
+padding:10px;
+text-align:left;
+}
+
+td{
+padding:10px;
+border-bottom:1px solid #ddd;
+}
+
+.badge-success{
+background:#dcfce7;
+color:#166534;
+padding:5px 10px;
+border-radius:12px;
+font-size:12px;
+font-weight:700;
+}
+
+.badge-danger{
+background:#fee2e2;
+color:#991b1b;
+padding:5px 10px;
+border-radius:12px;
+font-size:12px;
+font-weight:700;
+}
+
+.bar{
+height:28px;
+background:#e5e7eb;
+border-radius:50px;
+overflow:hidden;
+margin-bottom:8px;
+}
+
+.fill{
+height:100%;
+background:linear-gradient(90deg,#1d4f91,#3b82f6);
+display:flex;
+align-items:center;
+justify-content:flex-end;
+padding-right:10px;
+color:#fff;
+font-weight:700;
+}
+
+.grid2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+@media(max-width:900px){
+.grid2{
+grid-template-columns:1fr;
+}
+}
+</style>
 </head>
 <body>
 
-  <div class="sidebar">
-    <h2>MSAAP</h2>
-    <a href="#">Dashboard</a>
-    <a href="#">Analytics</a>
-    <a href="#">Students</a>
-    <a href="#">Tracking</a>
-  </div>
+<div class="header">
+<h1>MAM-ON ELEMENTARY SCHOOL</h1>
+<p>Km. 10, Tubo-tubo, Cagwait, Surigao del Sur • School ID: 132649 • Est. 1998</p>
+<h3 style="margin-top:8px;">Comprehensive Performance Analytics & Institutional Diagnostic Report</h3>
+</div>
 
-  <div class="main">
-    <h1>MAM-ON School Assessment Analytics Portal</h1>
+<div class="container">
 
-    <div class="cards">
-      <div class="card">
-        Learners<br>
-        <b>136</b>
-      </div>
-      <div class="card">
-        Assessments<br>
-        <b>6</b>
-      </div>
-      <div class="card">
-        MPS<br>
-        <b>53.94%</b>
-      </div>
-    </div>
+<div class="tabs">
+<button class="tab active">Overall</button>
+<button class="tab">Summative 1</button>
+<button class="tab">Summative 2</button>
+<button class="tab">Periodical 1</button>
+<button class="tab">Periodical 2</button>
+</div>
 
-    <canvas id="gradeChart"></canvas>
+<div class="controls">
+<button onclick="window.print()">🖨 Print</button>
+<button onclick="window.print()">📄 Save PDF</button>
+</div>
 
-    <table>
-      <thead>
-        <tr>
-          <th>Assessment</th>
-          <th>Status</th>
-          <th>Timestamp</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Summative 1</td>
-          <td>Submitted</td>
-          <td id="ts"></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="kpis">
 
-    <footer>
-      Created by Jasper S. Campado AO-II | Reviewed by Eric P. Palingcod P-I
-    </footer>
-  </div>
+<div class="card">
+<h4>Overall MPS</h4>
+<div class="value">53.94%</div>
+</div>
 
-  <!-- Points into the js folder -->
-  <script src="js/app.js"></script>
+<div class="card">
+<h4>Target Gap (75%)</h4>
+<div class="value" style="color:#dc2626;">-21.06%</div>
+</div>
+
+<div class="card">
+<h4>Total Learners</h4>
+<div class="value">136</div>
+</div>
+
+<div class="card">
+<h4>Highest Subject</h4>
+<div class="value" style="font-size:20px;">Data Needed</div>
+</div>
+
+<div class="card">
+<h4>Lowest Subject</h4>
+<div class="value" style="font-size:20px;">Data Needed</div>
+</div>
+
+<div class="card">
+<h4>Top Section</h4>
+<div class="value" style="font-size:20px;">Data Needed</div>
+</div>
+
+<div class="card">
+<h4>Priority Section</h4>
+<div class="value" style="font-size:20px;">Data Needed</div>
+</div>
+
+<div class="card">
+<h4>At-Risk Rate</h4>
+<div class="value">N/A</div>
+</div>
+
+<div class="card">
+<h4>Submission Rate</h4>
+<div class="value">16.7%</div>
+<p>1 of 6 Grades Complete</p>
+</div>
+
+</div>
+
+<div class="section">
+<h2>Grade-Level Performance Overview</h2>
+
+<p><strong>Approximate values extracted from provided screenshot.</strong></p>
+<br>
+
+<div>Grade 1</div>
+<div class="bar"><div class="fill" style="width:48%;">48%</div></div>
+
+<div>Grade 2</div>
+<div class="bar"><div class="fill" style="width:43%;">43%</div></div>
+
+<div>Grade 3</div>
+<div class="bar"><div class="fill" style="width:63%;">63%</div></div>
+
+<div>Grade 4</div>
+<div class="bar"><div class="fill" style="width:53%;">53%</div></div>
+
+<div>Grade 5</div>
+<div class="bar"><div class="fill" style="width:47%;">47%</div></div>
+
+<div>Grade 6</div>
+<div class="bar"><div class="fill" style="width:45%;">45%</div></div>
+
+</div>
+
+<div class="grid2">
+
+<div class="section">
+<h2>Learner Proficiency Distribution</h2>
+
+<table>
+<tr>
+<th>Band</th>
+<th>Range</th>
+<th>Status</th>
+</tr>
+
+<tr>
+<td>Proficient</td>
+<td>75% - 100%</td>
+<td>Insufficient Data</td>
+</tr>
+
+<tr>
+<td>Nearly Proficient</td>
+<td>50% - 74%</td>
+<td>Likely Majority</td>
+</tr>
+
+<tr>
+<td>Low Proficient</td>
+<td>25% - 49%</td>
+<td>Present</td>
+</tr>
+
+<tr>
+<td>Not Proficient</td>
+<td>0% - 24%</td>
+<td>Unknown</td>
+</tr>
+
+</table>
+</div>
+
+<div class="section">
+
+<h2>Subject Mastery Matrix</h2>
+
+<table>
+<tr>
+<th>Subject Area</th>
+<th>Average Mean</th>
+<th>MPS %</th>
+<th>Target Gap</th>
+</tr>
+
+<tr>
+<td colspan="4">Subject-level data not available from screenshot.</td>
+</tr>
+
+</table>
+
+</div>
+</div>
+
+<div class="section">
+<h2>Submission Tracker Panel</h2>
+
+<table>
+
+<tr>
+<th>Grade Level & Section</th>
+<th>Responsible Teacher</th>
+<th>Assessment Period</th>
+<th>File Status</th>
+<th>Upload Date</th>
+</tr>
+
+<tr>
+<td>Grade 1-6</td>
+<td>Not Specified</td>
+<td>Summative 1</td>
+<td><span class="badge-success">Submitted</span></td>
+<td>7/25/2026 7:45:37 AM</td>
+</tr>
+
+<tr>
+<td>Grade 1-6</td>
+<td>Not Specified</td>
+<td>Summative 2</td>
+<td><span class="badge-danger">Pending / Overdue</span></td>
+<td>No upload date</td>
+</tr>
+
+<tr>
+<td>Grade 1-6</td>
+<td>Not Specified</td>
+<td>Periodical 1</td>
+<td><span class="badge-danger">Pending / Overdue</span></td>
+<td>No upload date</td>
+</tr>
+
+<tr>
+<td>Grade 1-6</td>
+<td>Not Specified</td>
+<td>Periodical 2</td>
+<td><span class="badge-danger">Pending / Overdue</span></td>
+<td>No upload date</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section">
+<h2>Diagnostic Insights</h2>
+
+<ul>
+<li>Overall Mean Percentage Score (MPS) is <strong>53.94%</strong>, which is below the 75% mastery target.</li>
+<li>Grade 3 appears to be the strongest grade level based on the supplied visual.</li>
+<li>Grades 2, 5, and 6 demonstrate the greatest need for intervention.</li>
+<li>School-wide performance suggests remediation and competency reinforcement are necessary.</li>
+<li>Submission monitoring shows only one visible assessment submission from the provided evidence.</li>
+<li>Additional learner-level and subject-level data are required for precise mastery diagnostics.</li>
+</ul>
+
+</div>
+
+<div class="section">
+<h2>Priority Intervention Action Plan</h2>
+
+<table>
+
+<tr>
+<th>Priority Area</th>
+<th>Action</th>
+<th>Timeline</th>
+</tr>
+
+<tr>
+<td>Grades Below 50% MPS</td>
+<td>Conduct targeted remediation and small-group instruction.</td>
+<td>Immediate</td>
+</tr>
+
+<tr>
+<td>Near-Proficient Learners</td>
+<td>Provide focused enrichment and mastery activities.</td>
+<td>Next Assessment Cycle</td>
+</tr>
+
+<tr>
+<td>Assessment Monitoring</td>
+<td>Review competency gaps after every summative assessment.</td>
+<td>Monthly</td>
+</tr>
+
+<tr>
+<td>Submission Compliance</td>
+<td>Require complete uploads for all Grades 1–6 and all assessment periods.</td>
+<td>Ongoing</td>
+</tr>
+
+<tr>
+<td>School Target</td>
+<td>Raise overall MPS from 53.94% to ≥75%.</td>
+<td>Current School Year</td>
+</tr>
+
+</table>
+
+</div>
+
+<div class="section">
+<h2>Data Quality Notes</h2>
+
+<p>
+This dashboard was generated only from the visible information in the provided screenshot:
+136 learners, 6 assessments, 53.94% overall MPS, approximate grade-level performance bars, and one visible Summative 1 submission record.
+Subject-level, section-level, learner-level, and complete submission inventory data were not available; therefore several indicators are shown as placeholders pending detailed assessment records.
+</p>
+
+</div>
+
+</div>
+
 </body>
 </html>
