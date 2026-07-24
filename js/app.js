@@ -1,0 +1,1 @@
+document.getElementById("ts").innerText=new Date().toLocaleString();new Chart(document.getElementById("gradeChart"),{type:"bar",data:{labels:["G1","G2","G3","G4","G5","G6"],datasets:[{label:"MPS",data:[48.4,43.33,64.05,53.59,48,46]}]}});
