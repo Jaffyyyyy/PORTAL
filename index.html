@@ -1,46 +1,64 @@
-<div class="glass header">
+<body>
 
-<div style="
-display:flex;
-justify-content:space-between;
-align-items:center;
-flex-wrap:wrap;
-gap:20px;
-">
+<!-- WELCOME SCREEN -->
+<div id="welcome-screen">
 
-<!-- DEPED LOGO -->
+    <div class="hero-card">
 
-deped-logo.png
+        <h1>
+            Welcome to MAM-ON Elementary School Portal
+        </h1>
 
-<!-- SCHOOL INFORMATION -->
+        <p>
+            Quality Education for Every Learner
+        </p>
 
-<div style="text-align:center;flex:1;">
+        <p>
+            Term 1 • School Year 2026-2027
+        </p>
 
-<h1 style="margin-bottom:8px;">
-MAM-ON ELEMENTARY SCHOOL
-</h1>
+        <button class="continue-btn" onclick="enterPortal()">
+            Continue →
+        </button>
 
-<p>
-Km. 10, Tubo-tubo, Cagwait, Surigao del Sur
-<br>
-School ID: 132649 • Est. 1998
-</p>
-
-<h2 style="margin-top:10px;">
-Comprehensive Performance Analytics &
-Institutional Diagnostic Report
-</h2>
+    </div>
 
 </div>
 
-<!-- SCHOOL LOGO -->
+<!-- MAIN PORTAL -->
+<div id="portal-content" style="display:none;">
 
-mamon-logo.png
+    <!-- Put EVERYTHING below here -->
+
+    <div class="glass header">
+
+        <!-- DepEd Logo -->
+        <!-- School Logo -->
+
+        <h1>MAM-ON ELEMENTARY SCHOOL</h1>
+
+    </div>
+
+    <!-- Sidebar -->
+    <!-- Dashboard -->
+    <!-- Analytics -->
+    <!-- Reports -->
 
 </div>
 
-</div>
-</p>
+<script>
+
+function enterPortal(){
+
+    document.getElementById("welcome-screen").style.display="none";
+
+    document.getElementById("portal-content").style.display="block";
+
+}
+
+</script>
+
+</body>
 
 <h2>
 Comprehensive Performance Analytics &
