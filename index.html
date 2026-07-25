@@ -1,304 +1,188 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MAM-ON ELEMENTARY SCHOOL - Academic Analytics Dashboard</title>
+<div class="glass header">
 
+<div style="
+display:flex;
+justify-content:space-between;
+align-items:center;
+flex-wrap:wrap;
+gap:20px;
+">
+
+<!-- DEPED LOGO -->
+
+deped-logo.png
+
+<!-- SCHOOL INFORMATION -->
+
+<div style="text-align:center;flex:1;">
+
+<h1 style="margin-bottom:8px;">
+MAM-ON ELEMENTARY SCHOOL
+</h1>
+
+<p>
+Km. 10, Tubo-tubo, Cagwait, Surigao del Sur
+<br>
+School ID: 132649 • Est. 1998
+</p>
+
+<h2 style="margin-top:10px;">
+Comprehensive Performance Analytics &
+Institutional Diagnostic Report
+</h2>
+
+</div>
+
+<!-- SCHOOL LOGO -->
+
+mamon-logo.png
+
+</div>
+
+</div>
+</p>
+
+<h2>
+Comprehensive Performance Analytics &
+Institutional Diagnostic Report
+</h2>
+</div>
+
+</div>
+
+</div>
 <style>
 :root{
---bg1:#0f172a;
---bg2:#0F4C81;
---bg3:#6C63FF;
---glass:rgba(255,255,255,.10);
---border:rgba(255,255,255,.15);
---white:#fff;
---green:#22C55E;
---blue:#3B82F6;
---orange:#F59E0B;
---red:#EF4444;
---text:#E2E8F0;
+ --bg:#0f172a;
+ --card:rgba(255,255,255,.08);
+ --border:rgba(255,255,255,.15);
+ --text:#fff;
+ --muted:#cbd5e1;
+ --green:#22c55e;
+ --blue:#3b82f6;
+ --amber:#f59e0b;
+ --red:#ef4444;
+ --purple:#7c3aed;
 }
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:"Segoe UI",sans-serif;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,Arial,sans-serif}
 body{
-background:linear-gradient(
-135deg,
-#0f172a 0%,
-#1e293b 25%,
-#0F4C81 70%,
-#6C63FF 100%
-);
-background-size:400% 400%;
-animation:gradientMove 15s ease infinite;
-min-height:100vh;
-padding:20px;
-color:var(--white);
+ background:linear-gradient(135deg,#0f172a,#0F4C81,#6C63FF);
+ background-size:400% 400%;
+ animation:bg 15s infinite ease;
+ color:var(--text);
+ padding:20px;
 }
-
-@keyframes gradientMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+@keyframes bg{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
 }
-
-.container{
-max-width:1700px;
-margin:auto;
-}
-
 .glass{
-background:var(--glass);
+background:var(--card);
 backdrop-filter:blur(18px);
 border:1px solid var(--border);
 border-radius:24px;
-box-shadow:0 8px 32px rgba(0,0,0,.25);
+box-shadow:0 8px 30px rgba(0,0,0,.25);
 }
-
 .header{
-padding:35px;
+padding:30px;
 text-align:center;
 margin-bottom:20px;
 }
-
-.header h1{
-font-size:2.2rem;
-margin-bottom:8px;
-}
-
-.header h2{
-font-size:1.1rem;
-font-weight:400;
-opacity:.9;
-}
-
-.header h3{
-margin-top:10px;
-font-size:1.4rem;
-}
-
+.header h1{font-size:2rem}
+.header p{color:var(--muted)}
 .tabs{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-margin-bottom:20px;
+display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;
 }
-
 .tab{
-padding:12px 18px;
-border:none;
-border-radius:12px;
-background:rgba(255,255,255,.1);
-color:white;
+padding:10px 18px;border:none;border-radius:12px;
+color:#fff;background:rgba(255,255,255,.10);
 cursor:pointer;
 }
-
-.active{
-background:linear-gradient(135deg,#22C55E,#3B82F6);
-}
-
+.active{background:linear-gradient(135deg,var(--green),var(--blue))}
 .controls{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
-margin-bottom:20px;
+display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px;
 }
-
 .controls button{
-padding:10px 15px;
-border:none;
-border-radius:12px;
-cursor:pointer;
-font-weight:600;
+padding:10px 14px;border:none;border-radius:10px;cursor:pointer;
 }
-
-.print-btn{
-background:#22C55E;
-color:white;
-}
-
-.pdf-btn{
-background:#3B82F6;
-color:white;
-}
-
-.toggle-btn{
-background:white;
-}
-
-.kpi-grid{
+.kpis{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-gap:18px;
+gap:15px;
 margin-bottom:20px;
 }
-
 .card{
-padding:25px;
-transition:.3s;
+padding:20px;
 }
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.card h4{
-color:#CBD5E1;
-font-size:.95rem;
-}
-
-.card .value{
+.card h4{color:var(--muted);margin-bottom:8px}
+.value{
 font-size:2rem;
 font-weight:700;
-margin-top:8px;
 }
-
 .section{
 padding:20px;
 margin-bottom:20px;
 }
-
-.section-title{
-margin-bottom:15px;
+.grid2{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
 }
-
-.progress{
-height:22px;
-background:rgba(255,255,255,.15);
-border-radius:50px;
-overflow:hidden;
-margin-top:10px;
+@media(max-width:1000px){
+.grid2{grid-template-columns:1fr}
 }
-
-.progress-fill{
-height:100%;
-width:50%;
-background:linear-gradient(
-90deg,
-#22C55E,
-#84CC16
-);
-}
-
 table{
 width:100%;
 border-collapse:collapse;
 }
-
 th,td{
-padding:12px;
-border-bottom:1px solid rgba(255,255,255,.1);
+padding:10px;
+border-bottom:1px solid rgba(255,255,255,.10);
+text-align:left;
 }
-
-th{
-background:rgba(255,255,255,.05);
-}
-
 .badge{
-padding:6px 12px;
-border-radius:50px;
-font-weight:600;
-display:inline-block;
-}
-
-.success{
-background:rgba(34,197,94,.2);
-color:#DCFCE7;
-}
-
-.danger{
-background:rgba(239,68,68,.2);
-color:#FECACA;
-}
-
-.mastery-high{
-color:#22C55E;
+padding:5px 12px;
+border-radius:999px;
+font-size:.85rem;
 font-weight:bold;
 }
-
-.mastery-medium{
-color:#FBBF24;
-font-weight:bold;
-}
-
-.mastery-low{
-color:#EF4444;
-font-weight:bold;
-}
-
-.bar-area{
-margin:10px 0;
-}
-
-.bar-label{
-margin-bottom:6px;
-}
-
-.bar-bg{
-background:rgba(255,255,255,.1);
+.success{background:rgba(34,197,94,.2);color:#dcfce7}
+.danger{background:rgba(239,68,68,.2);color:#fee2e2}
+.progress{
 height:18px;
+background:rgba(255,255,255,.1);
 border-radius:50px;
 overflow:hidden;
 }
-
-.bar-fill{
+.progress-fill{
 height:100%;
-background:linear-gradient(
-90deg,
-#22C55E,
-#3B82F6
-);
+width:100%;
+background:linear-gradient(90deg,var(--green),#84cc16);
 }
-
+.bar{
+height:16px;
+border-radius:50px;
+background:linear-gradient(90deg,var(--green),var(--blue));
+}
 .insight{
-padding:18px;
-border-radius:16px;
-margin-bottom:15px;
+padding:15px;
+border-radius:18px;
+margin:10px 0;
 }
-
-.green{
-background:rgba(34,197,94,.18);
-}
-
-.orange{
-background:rgba(245,158,11,.18);
-}
-
-.red{
-background:rgba(239,68,68,.18);
-}
-
-.hidden{
-display:none;
-}
-
-.footer{
-text-align:center;
-margin-top:20px;
-opacity:.8;
-}
-
-@media(max-width:900px){
-.kpi-grid{
-grid-template-columns:1fr;
-}
-}
+.green{background:rgba(34,197,94,.18)}
+.orange{background:rgba(245,158,11,.18)}
+.red{background:rgba(239,68,68,.18)}
+.footer{text-align:center;opacity:.8;padding:20px}
 </style>
 </head>
-<body>
 
-<div class="container">
+<body>
 
 <div class="glass header">
 <h1>MAM-ON ELEMENTARY SCHOOL</h1>
-<h2>Km. 10, Tubo-tubo, Cagwait, Surigao del Sur - School ID: 132649 - Est. 1998</h2>
-<h3>Comprehensive Performance Analytics & Institutional Diagnostic Report</h3>
+<p>Km. 10, Tubo-tubo, Cagwait, Surigao del Sur - School ID: 132649 - Est. 1998</p>
+<h2>Comprehensive Performance Analytics & Institutional Diagnostic Report</h2>
 </div>
 
 <div class="tabs">
@@ -310,232 +194,138 @@ grid-template-columns:1fr;
 </div>
 
 <div class="controls">
-<button class="toggle-btn" onclick="toggleSection('kpis')">KPIs</button>
-<button class="toggle-btn" onclick="toggleSection('charts')">Charts</button>
-<button class="toggle-btn" onclick="toggleSection('mastery')">Matrices</button>
-<button class="toggle-btn" onclick="toggleSection('diagnostics')">Diagnostics</button>
-<button class="toggle-btn" onclick="toggleSection('actionplan')">Action Plan</button>
-<button class="toggle-btn" onclick="toggleSection('submission')">Submission Tracker</button>
-
-<button class="print-btn" onclick="window.print()">Print</button>
-<button class="pdf-btn" onclick="window.print()">Save PDF</button>
+<button onclick="toggle('kpis')">KPIs</button>
+<button onclick="toggle('charts')">Charts</button>
+<button onclick="toggle('mastery')">Mastery Matrix</button>
+<button onclick="toggle('submission')">Submission Tracker</button>
+<button onclick="toggle('diagnostics')">Diagnostics</button>
+<button onclick="toggle('action')">Action Plan</button>
+<button onclick="window.print()">Print</button>
+<button onclick="window.print()">Save PDF</button>
 </div>
 
 <!-- KPI SECTION -->
-
 <div id="kpis">
-
-<div class="kpi-grid">
+<div class="kpis">
 
 <div class="glass card">
 <h4>Overall MPS %</h4>
-<div class="value">74.3%</div>
+<div class="value">54.8%</div>
 </div>
 
 <div class="glass card">
 <h4>Target Gap</h4>
-<div class="value">-0.7%</div>
+<div class="value">-20.2%</div>
 </div>
 
 <div class="glass card">
 <h4>Total Learners</h4>
-<div class="value">243</div>
+<div class="value">132</div>
 </div>
 
 <div class="glass card">
 <h4>Highest Subject</h4>
-<div class="value">Science</div>
+<div class="value">GMRC</div>
 </div>
 
 <div class="glass card">
 <h4>Lowest Subject</h4>
-<div class="value">Math</div>
+<div class="value">Math G6</div>
 </div>
 
 <div class="glass card">
 <h4>Top Section</h4>
-<div class="value">Grade 5-A</div>
+<div class="value">Grade 3</div>
 </div>
 
 <div class="glass card">
 <h4>Priority Section</h4>
-<div class="value">Grade 3-A</div>
+<div class="value">Grade 6</div>
 </div>
 
 <div class="glass card">
 <h4>At-Risk Rate</h4>
-<div class="value">12.8%</div>
+<div class="value">High</div>
 </div>
 
-<div class="glass card" style="background:linear-gradient(135deg,rgba(34,197,94,.3),rgba(59,130,246,.3));">
+<div class="glass card" style="background:linear-gradient(135deg,rgba(34,197,94,.25),rgba(59,130,246,.25));">
 <h4>Submission KPI</h4>
-<div class="value">50%</div>
-<p>3 of 6 Grades Complete</p>
+<div class="value">100%</div>
+<div>6 of 6 Grades Complete</div>
 </div>
 
 </div>
-
 </div>
 
 <!-- CHARTS -->
-
 <div id="charts" class="glass section">
 
-<h2 class="section-title">Submission Progress</h2>
+<h2>Learner Achievement Snapshot</h2>
+<br>
 
+<h4>Submission Completion</h4>
 <div class="progress">
 <div class="progress-fill"></div>
 </div>
 
-<p style="margin-top:10px;">
-50% Submitted • 3 Submitted • 3 Pending
-</p>
-
 <br>
 
-<h2 class="section-title">Learner Proficiency Distribution</h2>
+<h4>Grade Performance Comparison (Average MPS)</h4>
 
-<table>
-<tr>
-<th>Band</th>
-<th>Learners</th>
-<th>%</th>
-</tr>
+<p>Grade 3 - 64.7%</p>
+<div class="bar" style="width:64.7%"></div><br>
 
-<tr>
-<td>Proficient (75-100%)</td>
-<td>112</td>
-<td>46.1%</td>
-</tr>
+<p>Grade 4 - 53.6%</p>
+<div class="bar" style="width:53.6%"></div><br>
 
-<tr>
-<td>Nearly Proficient (50-74%)</td>
-<td>87</td>
-<td>35.8%</td>
-</tr>
+<p>Grade 5 - 54.0%</p>
+<div class="bar" style="width:54%"></div><br>
 
-<tr>
-<td>Low Proficient (25-49%)</td>
-<td>31</td>
-<td>12.8%</td>
-</tr>
+<p>Grade 6 - 48.0%</p>
+<div class="bar" style="width:48%"></div><br>
 
-<tr>
-<td>Not Proficient (0-24%)</td>
-<td>13</td>
-<td>5.3%</td>
-</tr>
+<p>Grade 1 - 48.4%</p>
+<div class="bar" style="width:48.4%"></div><br>
 
-</table>
+<p>Grade 2 - 43.3%</p>
+<div class="bar" style="width:43.3%"></div>
 
 </div>
 
-<!-- GRADE COMPARISON -->
-
-<div class="glass section">
-
-<h2 class="section-title">Grade-Level Performance Comparison</h2>
-
-<div class="bar-area">
-<div class="bar-label">Grade 5 - 80.4%</div>
-<div class="bar-bg"><div class="bar-fill" style="width:80.4%"></div></div>
-</div>
-
-<div class="bar-area">
-<div class="bar-label">Grade 1 - 78.2%</div>
-<div class="bar-bg"><div class="bar-fill" style="width:78.2%"></div></div>
-</div>
-
-<div class="bar-area">
-<div class="bar-label">Grade 6 - 76.8%</div>
-<div class="bar-bg"><div class="bar-fill" style="width:76.8%"></div></div>
-</div>
-
-<div class="bar-area">
-<div class="bar-label">Grade 2 - 74.8%</div>
-<div class="bar-bg"><div class="bar-fill" style="width:74.8%"></div></div>
-</div>
-
-<div class="bar-area">
-<div class="bar-label">Grade 4 - 69.2%</div>
-<div class="bar-bg"><div class="bar-fill" style="width:69.2%"></div></div>
-</div>
-
-<div class="bar-area">
-<div class="bar-label">Grade 3 - 66.5%</div>
-<div class="bar-bg"><div class="bar-fill" style="width:66.5%"></div></div>
-</div>
-
-</div>
-
-<!-- SUBJECT MASTERY MATRIX -->
-
+<!-- SUBJECT MASTERY -->
 <div id="mastery" class="glass section">
 
-<h2 class="section-title">Subject Mastery Matrix</h2>
+<h2>Subject Mastery Matrix</h2>
 
 <table>
-
 <thead>
 <tr>
 <th>Subject Area</th>
-<th>Average Mean</th>
-<th>Subject MPS %</th>
+<th>Average MPS</th>
 <th>Target Gap</th>
+<th>Status</th>
 </tr>
 </thead>
 
 <tbody>
-
-<tr>
-<td>Science</td>
-<td>37.2</td>
-<td class="mastery-high">82.7%</td>
-<td>+7.7</td>
-</tr>
-
-<tr>
-<td>ESP</td>
-<td>36.0</td>
-<td class="mastery-high">80.0%</td>
-<td>+5.0</td>
-</tr>
-
-<tr>
-<td>English</td>
-<td>34.5</td>
-<td class="mastery-high">76.7%</td>
-<td>+1.7</td>
-</tr>
-
-<tr>
-<td>Filipino</td>
-<td>33.2</td>
-<td class="mastery-medium">73.8%</td>
-<td>-1.2</td>
-</tr>
-
-<tr>
-<td>Mathematics</td>
-<td>29.4</td>
-<td class="mastery-low">65.3%</td>
-<td>-9.7</td>
-</tr>
-
+<tr><td>GMRC</td><td>69.0%</td><td>-6.0</td><td>Near Target</td></tr>
+<tr><td>Filipino</td><td>60.2%</td><td>-14.8</td><td>Priority</td></tr>
+<tr><td>English / Language</td><td>48.4%</td><td>-26.6</td><td>Priority</td></tr>
+<tr><td>Mathematics</td><td>43.1%</td><td>-31.9</td><td>Critical</td></tr>
+<tr><td>Science</td><td>44.7%</td><td>-30.3</td><td>Critical</td></tr>
+<tr><td>EPP/TLE</td><td>63.6%</td><td>-11.4</td><td>Near Target</td></tr>
+<tr><td>MAPEH</td><td>61.6%</td><td>-13.4</td><td>Priority</td></tr>
 </tbody>
 
 </table>
-
 </div>
 
-<!-- SUBMISSION TRACKER -->
-
+<!-- SUBMISSION -->
 <div id="submission" class="glass section">
 
-<h2 class="section-title">Submission Status Matrix</h2>
+<h2>Submission Status Matrix</h2>
 
 <table>
-
 <thead>
 <tr>
 <th>Grade Level & Section</th>
@@ -547,142 +337,98 @@ grid-template-columns:1fr;
 </thead>
 
 <tbody>
-
-<tr>
-<td>Grade 1</td>
-<td>Not specified</td>
-<td>Summative 1</td>
-<td><span class="badge success">Submitted</span></td>
-<td>2026-07-24</td>
-</tr>
-
-<tr>
-<td>Grade 2</td>
-<td>Not specified</td>
-<td>Summative 1</td>
-<td><span class="badge success">Submitted</span></td>
-<td>2026-07-24</td>
-</tr>
-
-<tr>
-<td>Grade 3</td>
-<td>Not specified</td>
-<td>Summative 1</td>
-<td><span class="badge danger">Pending / Overdue</span></td>
-<td>No upload date</td>
-</tr>
-
-<tr>
-<td>Grade 4</td>
-<td>Not specified</td>
-<td>Summative 1</td>
-<td><span class="badge danger">Pending / Overdue</span></td>
-<td>No upload date</td>
-</tr>
-
-<tr>
-<td>Grade 5</td>
-<td>Not specified</td>
-<td>Summative 1</td>
-<td><span class="badge success">Submitted</span></td>
-<td>2026-07-24</td>
-</tr>
-
-<tr>
-<td>Grade 6</td>
-<td>Not specified</td>
-<td>Summative 1</td>
-<td><span class="badge danger">Pending / Overdue</span></td>
-<td>No upload date</td>
-</tr>
-
+<tr><td>Grade 1</td><td>Not Specified</td><td>Summative 1</td><td><span class="badge success">Submitted</span></td><td>Available</td></tr>
+<tr><td>Grade 2</td><td>Not Specified</td><td>Summative 1</td><td><span class="badge success">Submitted</span></td><td>Available</td></tr>
+<tr><td>Grade 3</td><td>Jessa Mae R. Flores</td><td>Summative 1</td><td><span class="badge success">Submitted</span></td><td>Available</td></tr>
+<tr><td>Grade 4</td><td>Alma C. Nayre</td><td>Summative 1</td><td><span class="badge success">Submitted</span></td><td>Available</td></tr>
+<tr><td>Grade 5</td><td>Lendon B. Abonales</td><td>Summative 1</td><td><span class="badge success">Submitted</span></td><td>Available</td></tr>
+<tr><td>Grade 6</td><td>Mark Zoilo C. Tajonera</td><td>Summative 1</td><td><span class="badge success">Submitted</span></td><td>Available</td></tr>
 </tbody>
-
 </table>
 
 </div>
 
 <!-- DIAGNOSTICS -->
-
 <div id="diagnostics" class="glass section">
 
-<h2 class="section-title">Diagnostic Insights</h2>
+<h2>Diagnostic Insights</h2>
 
 <div class="insight green">
 <h3>Strengths</h3>
-<p>
-✅ Science exceeds target by +7.7 percentage points.<br>
-✅ Grade 5 demonstrates the strongest overall performance.<br>
-✅ 46.1% of learners are classified as proficient.
-</p>
+<ul>
+<li>Grade 3 achieved the strongest academic performance.</li>
+<li>GMRC is the highest-performing subject schoolwide.</li>
+<li>Submission compliance reached 100%.</li>
+<li>EPP/TLE Grade 5 exceeded the mastery target.</li>
+</ul>
 </div>
 
 <div class="insight orange">
 <h3>Priority Areas</h3>
-<p>
-⚠ Mathematics shows the largest mastery gap (-9.7).<br>
-⚠ Grade 3 and Grade 4 require focused remediation.<br>
-⚠ At-risk learners are concentrated in Grades 3 and 4.
-</p>
+<ul>
+<li>Mathematics performance is consistently below target.</li>
+<li>Science Grade 4 requires urgent intervention.</li>
+<li>Grades 1 and 2 require literacy reinforcement.</li>
+</ul>
 </div>
 
 <div class="insight red">
-<h3>Submission Gaps</h3>
-<p>
-🔴 Grades 3, 4 and 6 remain pending for Summative 1 submission.<br>
-🔴 Submission completion is currently at 50%.
-</p>
+<h3>Critical Concerns</h3>
+<ul>
+<li>Grade 6 Mathematics MPS: 32.1%.</li>
+<li>Grade 4 Science MPS: 33.4%.</li>
+<li>Majority of subjects remain below the 75% mastery benchmark.</li>
+</ul>
 </div>
 
 </div>
 
 <!-- ACTION PLAN -->
+<div id="action" class="glass section">
 
-<div id="actionplan" class="glass section">
-
-<h2 class="section-title">Priority Intervention Action Plan</h2>
+<h2>Priority Intervention Action Plan</h2>
 
 <table>
 <tr>
 <th>Focus Area</th>
-<th>Strategy</th>
+<th>Intervention</th>
 <th>Timeline</th>
 </tr>
 
 <tr>
 <td>Mathematics</td>
-<td>Small-group remediation sessions</td>
-<td>Next 2 Weeks</td>
+<td>Small-group remediation and mastery drills</td>
+<td>Weekly</td>
 </tr>
 
 <tr>
-<td>Grade 3</td>
-<td>Weekly mastery monitoring</td>
-<td>Immediate</td>
+<td>Science Grade 4</td>
+<td>Targeted reteaching and formative assessments</td>
+<td>2 Weeks</td>
 </tr>
 
 <tr>
-<td>Grade 4</td>
-<td>Teacher coaching & intervention</td>
-<td>Immediate</td>
+<td>Grades 1–2 Literacy</td>
+<td>Daily guided reading program</td>
+<td>Ongoing</td>
 </tr>
 
 <tr>
 <td>At-Risk Learners</td>
-<td>Individual learning plans</td>
-<td>Ongoing</td>
-</tr>
-
-<tr>
-<td>Proficient Learners</td>
-<td>Enrichment activities</td>
-<td>Ongoing</td>
-</tr>
-
-<tr>
-<td>Pending Submissions</td>
-<td>Follow-up Grades 3, 4 & 6</td>
+<td>Individual intervention plans</td>
 <td>Immediate</td>
+</tr>
+
+<tr>
+<td>High Performers</td>
+<td>Enrichment and leadership activities</td>
+<td>Ongoing</td>
+</tr>
+
+<tr>
+<td>Monitoring</td>
+<td>Conduct Summative 2 progress review</td>
+<td>Next Assessment Cycle</td>
 </tr>
 
 </table>
@@ -690,24 +436,21 @@ grid-template-columns:1fr;
 </div>
 
 <div class="glass section">
-
-<h2 class="section-title">Data Quality Notes</h2>
-
+<h2>Data Quality Note</h2>
 <p>
-⚠ Academic statistics displayed in this dashboard are sample demonstration data used to populate analytics and visualizations. Replace with actual learner assessment records for official reporting and decision-making.
+Dashboard values were populated using actual Summative 1 MPS data currently available for Grades 1–6.
+Summative 2, Periodical 1, and Periodical 2 data are not yet available and remain placeholders for future reporting.
 </p>
-
 </div>
 
 <div class="footer">
-MAM-ON ELEMENTARY SCHOOL • School ID: 132649 • Academic Analytics Dashboard
-</div>
-
+MAM-ON ELEMENTARY SCHOOL • School ID: 132649 • Premium Academic Analytics Dashboard
 </div>
 
 <script>
-function toggleSection(id){
-document.getElementById(id).classList.toggle("hidden");
+function toggle(id){
+let el=document.getElementById(id);
+el.style.display=(el.style.display==='none')?'block':'none';
 }
 </script>
 
